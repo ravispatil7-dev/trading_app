@@ -1,0 +1,407 @@
+﻿body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: white;
+}
+
+/* Center Box */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Glass Card */
+.box {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    width: 350px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: none;
+    background: #1e293b;
+    color: white;
+}
+
+/* Buttons */
+button {
+  display: inline-flex;
+    padding: 12px;
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #020617;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #1e293b;
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #1e293b;
+    padding: 15px 10px;
+    border-radius: 12px;
+    width: 190px;
+}
+h3 {
+    text-align: center;
+}
+
+/* Table */
+table {
+    width: 100%;
+   border: 2px solid #334155;
+    border-collapse: collapse;
+   text-align: center;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border-left 1px solid #334155;
+    border-right: 1px solid #334155
+}
+.status-approved { color: #22c55e; }
+.status-pending { color: orange; }
+.status-rejected { color: red; }
+
+.cards {
+    display: flex;
+    gap: 5px;
+   text-align: center;
+    flex-wrap: nowrap;   /* keeps single row */
+    overflow-x: auto;    /* scroll if screen is small */
+    padding: 10px;
+}
+.card {
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+h2 {
+    color: #00d4ff;   /* light blue */
+}
+
+h3 {
+    color: #ffcc00;   /* yellow */
+}
+
+.profile-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: nowrap;   /* single row */
+    overflow-x: auto;    /* scroll if screen small */
+    padding: 10px;
+}
+
+.profile-row .card {
+    min-width: 250px;
+    flex-shrink: 0;
+}
+
+.profile-row {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.profile-row .card {
+    flex: 1;
+   line-height: 1;
+ 
+   margin: 6px 0;
+    min-width: 220px;
+}
+
+.profile-row2 {
+    display: flex;
+    flex: 1;
+   line-height: .8;
+ 
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.profile-row2 .card {
+    width: 40%;
+    text-align: center;
+}
+.card img {
+    display: block;
+    margin: 10px auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img {
+    width: 350px;
+    height: 350px;
+    border-radius: 10px;
+}
+
+.modal img {
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
+
+.logo {
+    text-align: left;
+    padding: 10px;
+}
+
+.datetime {
+    text-align: center;
+    color: #00d4ff;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.datetime p {
+    margin: 2px 0;
+   font-weight: bold;
+}
+
+/* DASHBOARD LAYOUT */
+.dashboard {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #0f172a;
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #cbd5e1;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #1e293b;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 20px;
+    background: #020617;
+    color: white;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #0f172a;
+    padding: 15px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #334155;
+}
+
+/* CHART */
+canvas {
+    background: #0f172a;
+    border-radius: 10px;
+    padding: 10px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #0f172a;
+}
+
+th {
+    background: #1e293b;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #334155;
+}
+
+tr:hover {
+    background: #1e293b;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filters input, .filters select {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+.filters button {
+    padding: 8px 12px;
+    background: #22c55e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filters button:hover {
+    background: #16a34a;
+}
+#profit {
+    font-weight: bold;
+    font-size: 18px;
+}
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: red;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: darkred;
+}
+<style>
+.circle-wrap {
+    width: 120px;
+    height: 120px;
+    margin: auto;
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    background: #1f2937;
+}
+
+.mask, .fill {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.mask {
+    clip: rect(0px, 120px, 120px, 60px);
+}
+
+.mask .fill {
+    clip: rect(0px, 60px, 120px, 0px);
+    background-color: #22c55e;
+    transform: rotate(0deg);
+    transition: transform 0.5s ease;
+}
+
+.inside-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #0b1220;
+    text-align: center;
+    line-height: 20px;
+    padding-top: 30px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 18px;
+}
+</style>

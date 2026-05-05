@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Pending Approval</title>
+</head>
+<body style="text-align:center; font-family:Arial; margin-top:100px;">
+
+    <h1>⏳ Registration Successful</h1>
+    <h2>Your account is waiting for admin approval</h2>
+
+    <p>Please wait while admin verifies your account.</p>
+
+    <a href="/">Go to Login</a>
+
+<script>
+setInterval(() => {
+    fetch("/check_status")
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "approved") {
+            window.location.href = "/dashboard";
+        }
+    });
+}, 3000);
+</script>
+</body>
+</html>

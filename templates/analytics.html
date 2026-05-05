@@ -1,0 +1,84 @@
+﻿<link rel="stylesheet" href="/static/style.css">
+
+<div class="dashboard">
+
+    <div class="sidebar">
+ <div class="logo">
+     
+   <img src="/static/logo.png" alt="Logo" width="220" >
+  
+    </div>
+
+  <div class="card">
+    <div class="datetime">
+    <p id="date"></p>
+    <p id="time"></p>
+    </div>
+    </div>
+     <h3>👤 User Profile</h3>
+        <a href="/dashboard">🏠 Dashboard</a></li>
+       <a href="/analytics">📈 Analytics</a>
+        <a href="/positions">💼 Positions</a>
+        <a href="/history">📜 Trade History</a>
+       <a href="/profile">👤 Profile</a>
+        <a href="/logout">🔓 Logout</a>
+        <a href="/settings">⚙️ Settings</a>
+    </div>
+
+   <!-- MAIN -->
+    <div class="main">
+
+        <h2>📊 Trading Performance</h2>
+
+        <!-- TOP CARDS -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Trades</h3>
+                <p id="total">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Win Rate</h3>
+                <p id="winrate">0%</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Profit</h3>
+                <p id="profit">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Balance</h3>
+                <p id="balance">0</p>
+            </div>
+
+        </div>
+
+        <!-- CHART -->
+        <h3>📈 Equity Growth</h3>
+        <canvas id="chart"></canvas>
+
+        <!-- TRADE TABLE -->
+        <h3>📋 Trade History</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Entry</th>
+                    <th>Exit</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody id="historyTable"></tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/analytics.js"></script>
+<script src="/static/script.js"></script>

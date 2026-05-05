@@ -1,0 +1,67 @@
+﻿<link rel="stylesheet" href="/static/style.css">
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        <h3>👑 Admin</h3>
+        <a href="/admin">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="main">
+
+        <h2>User Management</h2>
+
+        <input type="text" placeholder="Search..." onkeyup="searchUser(this)">
+
+        <table id="userTable" border="1" style="width:100%; margin-top:20px;">
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Status</th>
+                <th>Expiry</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for user in users %}
+            <tr>
+
+                <td>{{ user["name"] }}</td>
+                <td>{{ user["username"] }}</td>
+                <td>{{ user["status"] }}</td>
+                <td>{{ user["expiry_date"] }}</td>
+
+                <td>
+
+                    <form method="POST" action="/admin_change_password/{{ user['id'] }}" style="margin-bottom:5px;">
+                        <input type="password" name="new_password" placeholder="New Password">
+                        <button type="submit">Change</button>
+                    </form>
+
+                    <a href="/approve/{{ user['id'] }}">✅ Approve</a> |
+                    <a href="/reject/{{ user['id'] }}">❌ Reject</a> |
+                    <a href="/delete/{{ user['id'] }}">🗑 Delete</a> |
+                    <a href="/extend/{{ user['id'] }}">⏳ Extend</a>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+function searchUser(input){
+    let filter = input.value.toLowerCase();
+    let rows = document.querySelectorAll("#userTable tr");
+
+    rows.forEach((row, i) => {
+        if(i === 0) return;
+        row.style.display = row.innerText.toLowerCase().includes(filter) ? "" : "none";
+    });
+}
+</script>

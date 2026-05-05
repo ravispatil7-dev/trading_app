@@ -1,0 +1,96 @@
+﻿<link rel="stylesheet" href="/static/style.css">
+
+<div class="dashboard">
+
+    <div class="sidebar">
+ <div class="logo">
+     
+   <img src="/static/logo.png" alt="Logo" width="220" >
+  
+    </div>
+
+  <div class="card">
+    <div class="datetime">
+    <p id="date"></p>
+    <p id="time"></p>
+    </div>
+    </div>
+     <h3>👤 User Profile</h3>
+        <a href="/dashboard">🏠 Dashboard</a></li>
+       <a href="/analytics">📈 Analytics</a>
+        <a href="/positions">💼 Positions</a>
+        <a href="/history">📜 Trade History</a>
+       <a href="/profile">👤 Profile</a>
+        <a href="/logout">🔓 Logout</a>
+        <a href="/settings">⚙️ Settings</a>
+    </div>
+
+    <div class="main">
+
+    <h2>👤 User Profile</h2>
+
+<!-- ROW 1: 4 CARDS -->
+<div class="profile-row">
+
+    <div class="card">
+        <h3>👤 User Details</h3>
+        <p><b>Name:</b> {{user[1]}} {{user[2]}}</p>
+        <p><b>Mobile:</b> {{user[3]}}</p>
+        <p><b>Email:</b> {{user[4]}}</p>
+        <p><b>Username:</b> {{user[5]}}</p>
+    </div>
+
+    <div class="card">
+        <h3>💰 Subscription</h3>
+        <p><b>Status:</b> {{user[7]}}</p>
+        <p><b>Expiry:</b> {{user[9]}}</p>
+        <p><b>Payment:</b> {{user[10]}}</p>
+    </div>
+
+    <div class="card">
+        <h3>📱 Pay via PhonePe</h3>
+        <p>Scan QR to activate subscription</p>
+      <img src="/static/phonepe_qr.png" width="100" onclick="openPopup(this.src)">
+        <p>After payment, contact admin</p>
+    </div>
+
+    <div class="card">
+        <h3>🔐 Change Password</h3>
+        <form method="POST" action="/change_password">
+            <input type="password" name="old_password" placeholder="Old Password" required>
+            <input type="password" name="new_password" placeholder="New Password" required>
+            <button type="submit">Update Password</button>
+        </form>
+    </div>
+
+</div>
+
+<!-- ROW 2: 1 CENTER CARD -->
+<div class="profile-row2">
+
+    <div class="card">
+        <h3>Contact for More Details</h3>
+        <h2>Smart Logic Signals</h2>
+        <p>Send Payment Details to activate subscription</p>
+               <p>Ravi Patil : +91 944825 5385</p>
+         <p>Somashekhar : +91 96329 38479</p>
+<a href="https://wa.me/919448235385?text=Hello%20Admin" target="_blank">
+    <button>💬 Contact on WhatsApp</button>
+</a>
+    </div>
+
+</div>
+<div id="imgModal" class="modal" onclick="closePopup()">
+    <img id="popupImg">
+</div>
+<script>
+function openPopup(src) {
+    document.getElementById("popupImg").src = src;
+    document.getElementById("imgModal").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("imgModal").style.display = "none";
+}
+</script>
+<script src="/static/script.js"></script>

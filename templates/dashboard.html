@@ -1,0 +1,124 @@
+﻿  <title>Smart Logic Signals</title>
+<link rel="stylesheet" href="/static/style.css">
+ 
+<div class="dashboard">
+
+    <div class="sidebar">
+    <div class="logo">
+     
+   <img src="/static/logo.png" alt="Logo" width="220" >
+  
+    </div>
+
+  <div class="card">
+    <div class="datetime">
+    <p id="date"></p>
+    <p id="time"></p>
+    </div>
+    </div>
+        <h3>📊 User Panel</h3>
+       <a href="/dashboard">🏠 Dashboard</a></li>
+       <a href="/analytics">📈 Analytics</a>
+        <a href="/positions">💼 Positions</a>
+        <a href="/history">📜 Trade History</a>
+       <a href="/profile">👤 Profile</a>
+        <a href="/logout">🔓 Logout</a>
+        <a href="/settings">⚙️ Settings</a>
+    </div>
+
+    <div class="main">
+
+        <h2>Welcome {{user}}</h2>
+<div class="cards">
+
+    <div class="card">
+        <h3>Gold Price</h3>
+        <p id="price">--</p>
+    </div>
+
+    <div class="card">
+        <h3>Sentiment</h3>
+        <p id="sentiment">--</p>
+    </div>
+
+ <div class="card">
+    <h3>AI Confidence</h3>
+
+    <div class="circle-wrap">
+        <div class="circle">
+            <div class="mask full" id="maskFull">
+                <div class="fill" id="fill"></div>
+            </div>
+            <div class="mask half">
+                <div class="fill"></div>
+            </div>
+            <div class="inside-circle">
+                <span id="confidence">0%</span>
+                <br>
+                <small id="conf_label">--</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card" id="tradeCard">
+<h3>📊 Live Trade</h3>
+    <p><b>Status:</b> <span id="trade_status">WAIT</span></p>
+    <p><b>Signal:</b> <span id="trade_signal">-</span></p>
+    <p><b>Entry:</b> <span id="trade_entry">-</span></p>
+    <p><b>SL:</b> <span id="trade_sl">-</span></p>
+    <p><b>TP:</b> <span id="trade_tp">-</span></p>
+    <p><b>Profit:</b> <span id="trade_profit">0</span></p>
+
+    <button onclick="closeTrade()">❌ Close Trade</button>
+</div>
+</div>
+
+<h3>Multi Timeframe Analysis</h3>
+<table>
+<tr>
+    <th>Timeframe</th>
+    <th>RSI</th>
+    <th>ATR</th>
+</tr>
+
+<tr><td>15Min</td><td id="rsi_M15"></td><td id="atr_M15"></td></tr>
+<tr><td>1Hr</td><td id="rsi_H1"></td><td id="atr_H1"></td></tr>
+<tr><td>4Hr</td><td id="rsi_H4"></td><td id="atr_H4"></td></tr>
+</table>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Price</h3>
+                <p id="price">--</p>
+            </div>
+
+            <div class="card">
+                <h3>Signal</h3>
+                <p id="signal">WAIT</p>
+            </div>
+
+            <div class="card">
+                <h3>Entry</h3>
+                <p id="entry">--</p>
+            </div>
+
+            <div class="card">
+                <h3>Stop Loss</h3>
+                <p id="sl">--</p>
+            </div>
+
+            <div class="card">
+                <h3>Target</h3>
+                <p id="tp">--</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/static/script.js"></script>

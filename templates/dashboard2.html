@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Trading Dashboard</title>
+    <style>
+        body { background:#0b1220; color:white; font-family:Arial; }
+        .box { background:#111827; padding:20px; border-radius:10px; margin:10px; }
+        .green { color:#22c55e; }
+        .red { color:#ef4444; }
+        .yellow { color:#facc15; }
+        .row { display:flex; gap:10px; }
+        .progress {
+            height:10px; background:#333; border-radius:10px;
+        }
+        .bar {
+            height:10px; background:#22c55e; border-radius:10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📊 Trading Dashboard</h2>
+
+<div class="row">
+    <div class="box">
+        <h3>Gold Price</h3>
+        <h2 id="price">--</h2>
+    </div>
+
+    <div class="box">
+        <h3>Sentiment</h3>
+        <h2 id="sentiment">--</h2>
+    </div>
+
+    <div class="box">
+        <h3>Confidence</h3>
+        <h2 id="confidence">--%</h2>
+        <div class="progress">
+            <div id="conf_bar" class="bar" style="width:0%"></div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3>Trade Type</h3>
+        <h2 id="type">--</h2>
+    </div>
+</div>
+
+<div class="box">
+    <h3>📈 Live Trade</h3>
+    <p>Status: <span id="status">--</span></p>
+    <p>Signal: <span id="signal">--</span></p>
+    <p>Entry: <span id="entry">--</span></p>
+    <p>SL: <span id="sl">--</span></p>
+    <p>TP: <span id="tp">--</span></p>
+</div>
+
+<div class="box">
+    <h3>📊 Multi Timeframe</h3>
+    <table border="1" width="100%">
+        <tr><th>TF</th><th>RSI</th><th>ATR</th><th>Trend</th></tr>
+
+        <tr>
+            <td>M15</td>
+            <td id="rsi_m15"></td>
+            <td id="atr_m15"></td>
+            <td id="trend_m15"></td>
+        </tr>
+
+        <tr>
+            <td>H1</td>
+            <td id="rsi_h1"></td>
+            <td id="atr_h1"></td>
+            <td id="trend_h1"></td>
+        </tr>
+
+        <tr>
+            <td>H4</td>
+            <td id="rsi_h4"></td>
+            <td id="atr_h4"></td>
+            <td id="trend_h4"></td>
+        </tr>
+    </table>
+</div>
+
+<div class="box">
+    <h3>🧠 Signal Reason</h3>
+    <p id="reason">--</p>
+</div>
+
+<script>
+function colorRSI(val){
+    if(val > 60) return "green";
+    if(val < 40) return "red";
+    return "yellow";
+}
+
+function trendArrow(t){
+    return t === "UP" ? "⬆️" : "⬇️";
+}
+
+function update(){
+    fetch("/get_signal")
+    .then(r=>r.json())
+    .then(data=>{
+
+        document.getElementById("price").innerText = data.price || "--";
+        document.getElementById("sentiment").innerText = data.sentiment || "--";
+
+        // CONFIDENCE
+        let conf = data.confidence || 0;
+        document.getElementById("confidence").innerText = conf + "%";
+        document.getElementById("conf_bar").style.width = conf + "%";
+
+        document.getElementById("type").innerText = data.trade_type || "--";
+
+        document.getElementById("status").innerText = data.status || "--";
+        document.getElementById("signal").innerText = data.trade?.signal || "--";
+        document.getElementById("entry").innerText = data.trade?.entry || "--";
+        document.getElementById("sl").innerText = data.trade?.sl || "--";
+        document.getElementById("tp").innerText = data.trade?.tp || "--";
+
+        let tf = data.timeframes || {};
+
+        // M15
+        if(tf.M15){
+            document.getElementById("rsi_m15").innerHTML =
+                `<span class="${colorRSI(tf.M15.rsi)}">${tf.M15.rsi}</span>`;
+            document.getElementById("atr_m15").innerText = tf.M15.atr;
+            document.getElementById("trend_m15").innerText = trendArrow(tf.M15.trend);
+        }
+
+        // H1
+        if(tf.H1){
+            document.getElementById("rsi_h1").innerHTML =
+                `<span class="${colorRSI(tf.H1.rsi)}">${tf.H1.rsi}</span>`;
+            document.getElementById("atr_h1").innerText = tf.H1.atr;
+            document.getElementById("trend_h1").innerText = trendArrow(tf.H1.trend);
+        }
+
+        // H4
+        if(tf.H4){
+            document.getElementById("rsi_h4").innerHTML =
+                `<span class="${colorRSI(tf.H4.rsi)}">${tf.H4.rsi}</span>`;
+            document.getElementById("atr_h4").innerText = tf.H4.atr;
+            document.getElementById("trend_h4").innerText = trendArrow(tf.H4.trend);
+        }
+
+        // REASON
+        let reason = "";
+        if(data.sentiment) reason += "Sentiment: " + data.sentiment + " | ";
+        if(data.confidence) reason += "Confidence: " + data.confidence + "% | ";
+        if(data.trade_type) reason += "Type: " + data.trade_type;
+
+        document.getElementById("reason").innerText = reason;
+
+    });
+}
+
+setInterval(update, 2000);
+update();
+</script>
+
+</body>
+</html>

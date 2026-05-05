@@ -1,0 +1,75 @@
+﻿<link rel="stylesheet" href="/static/style.css">
+
+<div class="dashboard">
+
+    <div class="sidebar">
+ <div class="logo">
+     
+   <img src="/static/logo.png" alt="Logo" width="220" >
+  
+    </div>
+
+  <div class="card">
+    <div class="datetime">
+    <p id="date"></p>
+    <p id="time"></p>
+    </div>
+    </div>
+     <h3>👤 User Profile</h3>
+       <a href="/dashboard">🏠 Dashboard</a></li>
+       <a href="/analytics">📈 Analytics</a>
+        <a href="/positions">💼 Positions</a>
+        <a href="/history">📜 Trade History</a>
+       <a href="/profile">👤 Profile</a>
+        <a href="/logout">🔓 Logout</a>
+        <a href="/settings">⚙️ Settings</a>
+    </div>
+
+   <!-- MAIN -->
+    <div class="main">
+
+        <h2>📜 Trade History</h2>
+
+<table border="1">
+<tr>
+    <th>Time</th>
+    <th>Signal</th>
+    <th>Entry</th>
+    <th>Exit</th>
+    <th>Profit</th>
+</tr>
+
+<tbody id="historyTable"></tbody>
+</table>
+
+<script>
+function loadHistory(){
+    fetch("/api/history")
+    .then(res => res.json())
+    .then(data => {
+        let table = document.getElementById("historyTable");
+        table.innerHTML = "";
+
+        data.forEach(trade => {
+            let row = `
+            <tr>
+                <td>${trade.time}</td>
+                <td>${trade.signal}</td>
+                <td>${trade.entry}</td>
+                <td>${trade.exit}</td>
+                <td>${trade.profit}</td>
+            </tr>`;
+            table.innerHTML += row;
+        });
+    });
+}
+
+loadHistory();
+</script>
+
+    </div>
+
+</div>
+
+<script src="/static/history.js"></script>
+<script src="/static/script.js"></script>

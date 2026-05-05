@@ -1,0 +1,77 @@
+﻿<link rel="stylesheet" href="/static/style.css">
+
+<div class="dashboard">
+
+    <div class="sidebar">
+ <div class="logo">
+     
+   <img src="/static/logo.png" alt="Logo" width="220" >
+  
+    </div>
+
+  <div class="card">
+    <div class="datetime">
+    <p id="date"></p>
+    <p id="time"></p>
+    </div>
+    </div>
+     <h3>👤 User Profile</h3>
+      <a href="/dashboard">🏠 Dashboard</a></li>
+       <a href="/analytics">📈 Analytics</a>
+        <a href="/positions">💼 Positions</a>
+        <a href="/history">📜 Trade History</a>
+       <a href="/profile">👤 Profile</a>
+        <a href="/logout">🔓 Logout</a>
+        <a href="/settings">⚙️ Settings</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <h2>📊 Live Position</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Signal</h3>
+                <p id="signal">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Entry</h3>
+                <p id="entry">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Current Price</h3>
+                <p id="price">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Profit</h3>
+                <p id="profit">0</p>
+            </div>
+
+            <div class="card">
+                <h3>SL</h3>
+                <p id="sl">-</p>
+            </div>
+
+            <div class="card">
+                <h3>TP</h3>
+                <p id="tp">-</p>
+            </div>
+
+<div class="card">
+    <h3>Action</h3>
+    <button onclick="closeTrade()">❌ Close Trade</button>
+</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/static/positions.js"></script>
+<script src="/static/script.js"></script>

@@ -1,0 +1,67 @@
+﻿<link rel="stylesheet" href="/static/style.css">
+
+<div class="dashboard">
+
+    <div class="sidebar">
+ <div class="logo">
+     
+   <img src="/static/logo.png" alt="Logo" width="220" >
+  
+    </div>
+
+  <div class="card">
+    <div class="datetime">
+    <p id="date"></p>
+    <p id="time"></p>
+    </div>
+    </div>
+     <h3>👤 User Profile</h3>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/positions">Positions</a>
+       <a href="/trade_history">Trade History</a>
+       <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+        <a href="/Settings">Settings</a>
+    </div>
+
+   <!-- MAIN -->
+    <div class="main">
+
+        <h2>📋 Trade History</h2>
+
+<div class="filters">
+
+    <input type="text" id="search" placeholder="Search..." onkeyup="loadHistory()">
+
+    <select id="filter" onchange="loadHistory()">
+        <option value="all">All</option>
+        <option value="today">Today</option>
+        <option value="week">This Week</option>
+        <option value="month">This Month</option>
+    </select>
+
+    <button onclick="downloadCSV()">⬇ Download CSV</button>
+
+</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Signal</th>
+                    <th>Entry</th>
+                    <th>Exit</th>
+                    <th>SL</th>
+                    <th>TP</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody id="historyTable"></tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script src="/static/history.js"></script>
+<script src="/static/script.js"></script>
